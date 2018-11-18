@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B41F1B8721A0A50F00D14884 /* ffprobe in Resources */ = {isa = PBXBuildFile; fileRef = B41F1B8621A0A50F00D14884 /* ffprobe */; };
+		B41F1B8921A1904E00D14884 /* README.MD in Sources */ = {isa = PBXBuildFile; fileRef = B41F1B8821A1904E00D14884 /* README.MD */; };
+		B41F1B8B21A1972800D14884 /* screenshot.JPEG in Resources */ = {isa = PBXBuildFile; fileRef = B41F1B8A21A1972700D14884 /* screenshot.JPEG */; };
 		B4846908219368E6000C7784 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4846907219368E6000C7784 /* AppDelegate.swift */; };
 		B484690A219368E6000C7784 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4846909219368E6000C7784 /* ViewController.swift */; };
 		B484690C219368E6000C7784 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B484690B219368E6000C7784 /* Assets.xcassets */; };
@@ -16,6 +18,8 @@
 
 /* Begin PBXFileReference section */
 		B41F1B8621A0A50F00D14884 /* ffprobe */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = ffprobe; sourceTree = "<group>"; };
+		B41F1B8821A1904E00D14884 /* README.MD */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.MD; sourceTree = "<group>"; };
+		B41F1B8A21A1972700D14884 /* screenshot.JPEG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = screenshot.JPEG; sourceTree = "<group>"; };
 		B4846904219368E6000C7784 /* CutListCreatorX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CutListCreatorX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4846907219368E6000C7784 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4846909219368E6000C7784 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +64,8 @@
 				B484690D219368E6000C7784 /* Main.storyboard */,
 				B4846910219368E6000C7784 /* Info.plist */,
 				B41F1B8621A0A50F00D14884 /* ffprobe */,
+				B41F1B8821A1904E00D14884 /* README.MD */,
+				B41F1B8A21A1972700D14884 /* screenshot.JPEG */,
 			);
 			path = CutListCreatorX;
 			sourceTree = "<group>";
@@ -124,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B41F1B8721A0A50F00D14884 /* ffprobe in Resources */,
+				B41F1B8B21A1972800D14884 /* screenshot.JPEG in Resources */,
 				B484690C219368E6000C7784 /* Assets.xcassets in Resources */,
 				B484690F219368E6000C7784 /* Main.storyboard in Resources */,
 			);
@@ -136,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B41F1B8921A1904E00D14884 /* README.MD in Sources */,
 				B484690A219368E6000C7784 /* ViewController.swift in Sources */,
 				B4846908219368E6000C7784 /* AppDelegate.swift in Sources */,
 			);
