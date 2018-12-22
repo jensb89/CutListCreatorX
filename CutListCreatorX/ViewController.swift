@@ -23,6 +23,17 @@ class ViewController: NSViewController {
     var frameOffset : Int = 1
     var fileSize : Int = 0
     //let playerLayer : AVPlayerLayer?
+    //let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+    
+    //@objc func fireTimer() {
+    //    print("Timer fired!")
+    //}
+    let interval = CMTime(seconds: 0.5,
+                          preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+    //let timeObserverToken = playerItem.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { time in
+    //    progressBar.progress = 20;
+    //}
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,6 +128,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var cutNumberView: NSTableColumn!
     @IBOutlet weak var table: NSScrollView!
     @IBOutlet weak var playerView: AVPlayerView!
+    @IBOutlet weak var graphViewCtrl: GraphView!
+    @IBOutlet weak var progressBar: NSProgressIndicator!
     
     //Buton callbacks
     @IBAction func buttonCallback(_ sender: NSButton) {
@@ -128,7 +141,13 @@ class ViewController: NSViewController {
         print(playerView.player?.currentItem?.status.rawValue)
         print(playerView.player?.currentItem?.currentTime().seconds)
         cutTimes.append((playerView.player?.currentItem!.currentTime().seconds)!)
+        // Update tableView
         tableView.reloadData()
+        // Update Cut Graphic
+        graphViewCtrl.numberOfCuts = cutTimes.count
+        graphViewCtrl.cuts = cutTimes
+        videoTime = (playerView.player?.currentItem?.duration.seconds)! //workaround, because number is sometimes nan at the beginning
+        graphViewCtrl.duration = videoTime
     }
     
     @IBAction func loadFileCallback(_ sender: NSButton) {
@@ -138,6 +157,12 @@ class ViewController: NSViewController {
         let url = URL(string:fileURL)
         // Create a new AVPlayer and associate it with the player view
         let player = AVPlayer(url: url!)
+        // Add Periodic Time Observer to update the progress indicator
+        let timeObserverToken = player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { time in
+            if self.videoTime != 0.0 || !self.videoTime.isNaN {
+                self.progressBar.doubleValue = ((self.playerView.player?.currentItem!.currentTime().seconds)!/self.videoTime)*100
+            }
+        }
         playerView.player = player
         playerView.player?.rate = 1.0
         playerView.player?.play()
@@ -173,6 +198,7 @@ class ViewController: NSViewController {
         print(player.currentItem?.duration.seconds)
         print(playerView.player?.currentItem?.duration.timescale)
         videoTime = (playerView.player?.currentItem?.duration.seconds)!
+
         
         // Extras
         print(playerView.player?.currentItem?.canPlaySlowForward)
@@ -433,3 +459,6 @@ extension String {
 //https://stackoverflow.com/questions/25348877/how-to-play-a-local-video-with-swift
 
 //https://stackoverflow.com/questions/24608812/playing-fullscreen-video-on-os-x-with-avplayer
+
+// GRAPHICS
+// https://www.raywenderlich.com/1101-core-graphics-on-macos-tutorial

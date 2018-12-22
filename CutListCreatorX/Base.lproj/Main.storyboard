@@ -658,7 +658,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="CutListCreatorX" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="85" y="-186"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -683,15 +683,15 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="CutListCreatorX" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="631" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="631" height="276"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <avPlayerView fixedFrame="YES" controlsStyle="floating" translatesAutoresizingMaskIntoConstraints="NO" id="Mz9-Pp-hX1">
-                                <rect key="frame" x="20" y="56" width="299" height="173"/>
+                                <rect key="frame" x="20" y="62" width="299" height="173"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </avPlayerView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oda-qh-U9g">
-                                <rect key="frame" x="32" y="7" width="62" height="32"/>
+                                <rect key="frame" x="32" y="3" width="62" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="-20" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4k5-ls-5c7">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -702,7 +702,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q3H-uf-5E4">
-                                <rect key="frame" x="122" y="7" width="53" height="32"/>
+                                <rect key="frame" x="122" y="3" width="53" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="-1" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eO3-Z5-hy1">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -713,7 +713,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Dc-Wq-sAo">
-                                <rect key="frame" x="210" y="7" width="55" height="32"/>
+                                <rect key="frame" x="210" y="3" width="55" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="+1" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sxv-4X-nBD">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -724,7 +724,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZLP-bC-dOF">
-                                <rect key="frame" x="289" y="7" width="65" height="32"/>
+                                <rect key="frame" x="289" y="3" width="65" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="+20" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3eY-JA-BEm">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -735,7 +735,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="okP-Cf-kg9">
-                                <rect key="frame" x="202" y="245" width="162" height="25"/>
+                                <rect key="frame" x="202" y="251" width="162" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CutListCreatorX" id="zWG-AL-IO1">
                                     <font key="font" metaFont="system" size="21"/>
@@ -744,7 +744,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="naa-9Q-3gj">
-                                <rect key="frame" x="362" y="7" width="86" height="32"/>
+                                <rect key="frame" x="362" y="3" width="86" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Set Cut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fl9-M8-CQK">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -755,7 +755,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pw6-bi-SVx">
-                                <rect key="frame" x="402" y="237" width="133" height="32"/>
+                                <rect key="frame" x="402" y="243" width="133" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Load Video File" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Nz5-82-yRW">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -766,7 +766,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hm5-xi-nuW">
-                                <rect key="frame" x="402" y="211" width="113" height="32"/>
+                                <rect key="frame" x="402" y="217" width="113" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Load Cutlist" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="s6c-PD-KDw">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -777,7 +777,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t57-cq-ntd">
-                                <rect key="frame" x="458" y="7" width="112" height="32"/>
+                                <rect key="frame" x="458" y="3" width="112" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Save Cutlist" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hj2-bx-okG">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -788,7 +788,7 @@
                                 </connections>
                             </button>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTX-J4-yGp">
-                                <rect key="frame" x="336" y="56" width="228" height="159"/>
+                                <rect key="frame" x="336" y="62" width="228" height="159"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" id="9Gd-f4-BYQ">
                                     <rect key="frame" x="1" y="0.0" width="226" height="158"/>
@@ -872,7 +872,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="fP0-31-SfZ">
-                                    <rect key="frame" x="1" y="142" width="213" height="16"/>
+                                    <rect key="frame" x="1" y="-15" width="0.0" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="BpN-C6-ym3">
@@ -884,18 +884,28 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="am7-9f-uuv" customClass="GraphView" customModule="CutListCreatorX" customModuleProvider="target">
+                                <rect key="frame" x="20" y="51" width="299" height="9"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                            </customView>
+                            <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="sr0-CF-IjX">
+                                <rect key="frame" x="20" y="35" width="299" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="cutNumberView" destination="tIe-cX-inx" id="4QJ-uq-dCW"/>
+                        <outlet property="graphViewCtrl" destination="am7-9f-uuv" id="x10-Yf-DOP"/>
                         <outlet property="playerView" destination="Mz9-Pp-hX1" id="KDl-27-nm5"/>
+                        <outlet property="progressBar" destination="sr0-CF-IjX" id="CsV-CR-6b0"/>
                         <outlet property="table" destination="NTX-J4-yGp" id="heA-kA-Oi1"/>
                         <outlet property="tableView" destination="3aI-Df-Pve" id="ptd-eI-HcV"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="61.5" y="688"/>
+            <point key="canvasLocation" x="61.5" y="691"/>
         </scene>
     </scenes>
 </document>
