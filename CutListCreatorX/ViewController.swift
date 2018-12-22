@@ -23,13 +23,6 @@ class ViewController: NSViewController {
     var frameOffset : Int = 1
     var fileSize : Int = 0
     //let playerLayer : AVPlayerLayer?
-    //let timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
-    
-    //@objc func fireTimer() {
-    //    print("Timer fired!")
-    //}
-    let interval = CMTime(seconds: 0.5,
-                          preferredTimescale: CMTimeScale(NSEC_PER_SEC))
     //let timeObserverToken = playerItem.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { time in
     //    progressBar.progress = 20;
     //}
@@ -140,45 +133,60 @@ class ViewController: NSViewController {
         print(videoTime)
         print(playerView.player?.currentItem?.status.rawValue)
         print(playerView.player?.currentItem?.currentTime().seconds)
+        print("StatusClb:")
+        print(playerView.player?.currentItem?.status.rawValue)
         cutTimes.append((playerView.player?.currentItem!.currentTime().seconds)!)
         // Update tableView
         tableView.reloadData()
         // Update Cut Graphic
         graphViewCtrl.numberOfCuts = cutTimes.count
         graphViewCtrl.cuts = cutTimes
-        videoTime = (playerView.player?.currentItem?.duration.seconds)! //workaround, because number is sometimes nan at the beginning
-        graphViewCtrl.duration = videoTime
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "status" {
+            if playerView.player?.currentItem?.status == .readyToPlay {
+                print("AVPlayer is ready!")
+                print(playerView.player?.currentItem?.duration)
+                print(CMTimeGetSeconds((playerView.player?.currentItem?.duration)!))
+                // Set the video duration and update the same info in the graphicViewController
+                videoTime = (playerView.player?.currentItem?.duration.seconds)!
+                graphViewCtrl.duration = videoTime
+            }
+        }
     }
     
     @IBAction func loadFileCallback(_ sender: NSButton) {
         let file = loadFile()
+        if file.isEmpty{
+            return
+        }
         videoFileName = file
         let fileURL = "file:///" + file
         let url = URL(string:fileURL)
+        
         // Create a new AVPlayer and associate it with the player view
         let player = AVPlayer(url: url!)
+        
         // Add Periodic Time Observer to update the progress indicator
+        let interval = CMTime(seconds: 0.5, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
         let timeObserverToken = player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { time in
             if self.videoTime != 0.0 || !self.videoTime.isNaN {
                 self.progressBar.doubleValue = ((self.playerView.player?.currentItem!.currentTime().seconds)!/self.videoTime)*100
             }
         }
+        
+        //Bind the player to the playerView
         playerView.player = player
+        // Add key value observation for the player status. The player is loaded asynchronous and not all values are availabe directly at the beginning (e.g. the video duration)
+        // More info: https://stackoverflow.com/questions/23874574/avplayer-item-get-a-nan-duration
+        // It seems key-value-binding for the status property only works for the playerItem and not the player object
+        playerView.player?.currentItem?.addObserver(self, forKeyPath: "status", options: .new, context: nil)
+        
+        // Set the rate and start playing
         playerView.player?.rate = 1.0
         playerView.player?.play()
         
-        print("Status:")
-        // TODO: Implement key-value observation and check for AVplayer status ready:
-        // https://stackoverflow.com/questions/23874574/avplayer-item-get-a-nan-duration
-        /*while (true){
-            if(playerView.player?.currentItem?.status.rawValue == 1){
-                print("DONE")
-                break
-            sleep(1)
-            // do nothing
-            }
-        }*/
-        print(playerView.player?.currentItem?.status.rawValue)
         
         //FFPROBE
         let infos = getVideoInfos(file:file)
@@ -190,16 +198,8 @@ class ViewController: NSViewController {
                 frameRate = Double(matchesNew[0])!/Double(matchesNew[1])!
             }
         }
-        fileSize = Int(infos.joined().matchingStrings(regex: "size=(\\d+)")[1])!
-        
-        // Duration
-        //print(playerView.player?.currentItem?.duration)
-        print(playerView.player?.currentItem?.duration.seconds)
-        print(player.currentItem?.duration.seconds)
-        print(playerView.player?.currentItem?.duration.timescale)
-        videoTime = (playerView.player?.currentItem?.duration.seconds)!
+        fileSize = Int(infos.joined().matchingStrings(regex: "size=(\\d+)").last!)!
 
-        
         // Extras
         print(playerView.player?.currentItem?.canPlaySlowForward)
         //https://stackoverflow.com/questions/36378642/avplayeritems-canplayslowforward-property-never-called
