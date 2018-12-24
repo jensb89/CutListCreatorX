@@ -161,6 +161,13 @@ class ViewController: NSViewController {
         playerView.player?.currentItem?.step(byCount: -20)
     }
     
+    @IBAction func RemoveEntryCallback(_ sender: NSButton) {
+        cutList.cutTimes.removeLast()
+        tableView.reloadData()
+        graphViewCtrl.numberOfCuts = cutList.cutTimes.count
+        graphViewCtrl.cuts = cutList.cutTimes
+    }
+    
     func tableViewDoubleClick(_ sender:AnyObject) {
         
         if (tableView.selectedRow >= 0){
