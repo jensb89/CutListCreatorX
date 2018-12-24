@@ -1,0 +1,38 @@
+// SNIPPETS, URLS and more
+
+
+//   let asset = AVAsset(URL: NSBundle.mainBundle().URLForResource("SampleVideo", withExtension: "mp4")!)
+//let playerItem = AVPlayerItem(asset: asset)
+//let player = AVPlayer(playerItem: playerItem)
+//let playerLayer = AVPlayerLayer(player: player)
+//playerLayer.frame = self.view.bounds
+//self.view.layer.addSublayer(playerLayer)
+//player.play()
+//player.rate = 0.5
+
+//https://www.hackingwithswift.com/example-code/media/how-to-play-videos-using-avplayerviewcontroller
+// Seems not available in Xcode 8
+//playerView.player?.currentItem?.duration.seconds
+//let vc = AVPlayerViewController()
+//vc.player = player
+//vc.present(animated: true) {
+//    vc.player?.play()
+//}
+
+
+//guard let path = Bundle.main.path(forResource: "\(name)", ofType:"\(type)") else {
+//    debugPrint("video not found")
+//    return
+//}
+
+// https://stackoverflow.com/questions/14272996/play-video-frame-by-frame
+
+//https://stackoverflow.com/questions/25348877/how-to-play-a-local-video-with-swift
+
+//https://stackoverflow.com/questions/24608812/playing-fullscreen-video-on-os-x-with-avplayer
+
+// GRAPHICS
+// https://www.raywenderlich.com/1101-core-graphics-on-macos-tutorial
+
+// Upload cutlist
+//curl -F userfile[]=@$1 -F MAX_FILE_SIZE=10000000 -F confirm=true -F type=blank -F userid=$2 -F version=1 "$CutListAT/index.php?upload=2"

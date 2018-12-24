@@ -766,9 +766,9 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hm5-xi-nuW">
-                                <rect key="frame" x="402" y="217" width="113" height="32"/>
+                                <rect key="frame" x="332" y="217" width="145" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Load Cutlist" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="s6c-PD-KDw">
+                                <buttonCell key="cell" type="push" title="Load local Cutlist" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="s6c-PD-KDw">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -788,7 +788,7 @@
                                 </connections>
                             </button>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTX-J4-yGp">
-                                <rect key="frame" x="336" y="62" width="228" height="159"/>
+                                <rect key="frame" x="355" y="62" width="228" height="159"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" id="9Gd-f4-BYQ">
                                     <rect key="frame" x="1" y="0.0" width="226" height="158"/>
@@ -892,6 +892,17 @@
                                 <rect key="frame" x="20" y="35" width="299" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x8d-yd-Ejj">
+                                <rect key="frame" x="473" y="217" width="160" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Load from Cutlist.at" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HeQ-uW-YxE">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="loadCutlistAt:" target="XfG-lQ-9wD" id="8Ut-P1-xaI"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
