@@ -21,6 +21,7 @@ extension ViewController: NSTableViewDelegate {
     fileprivate enum CellIdentifiers {
         static let CutCell = "cutNumberCellID"
         static let TimeCell = "timeCellID"
+        static let FrameCell = "frameCellID"
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -42,8 +43,12 @@ extension ViewController: NSTableViewDelegate {
             print(text)
             cellIdentifier = CellIdentifiers.CutCell
         } else if tableColumn == tableView.tableColumns[1] {
-            text = String(cutList.cutTimes[row])
+            text = String(format:"%.2f", cutList.cutTimes[row])
             cellIdentifier = CellIdentifiers.TimeCell
+        }
+        else if tableColumn == tableView.tableColumns[2]{
+            text = String(Int(cutList.cutTimes[row]*frameRate)+1)
+            cellIdentifier = CellIdentifiers.FrameCell
         }
         
         // Creates or reuses a cell with a given identifier and fill it with data
