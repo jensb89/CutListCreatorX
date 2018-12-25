@@ -96,6 +96,10 @@ class ViewController: NSViewController {
         }
     }
     
+    @IBAction func testClback(_ sender: AnyObject) {
+        let sniplist = Sniplist()
+        sniplist.uploadCutlist()
+    }
     @IBAction func loadFileCallback(_ sender: NSButton) {
         let file = loadFile()
         if file.isEmpty{

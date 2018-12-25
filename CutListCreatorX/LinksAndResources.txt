@@ -36,3 +36,48 @@
 
 // Upload cutlist
 //curl -F userfile[]=@$1 -F MAX_FILE_SIZE=10000000 -F confirm=true -F type=blank -F userid=$2 -F version=1 "$CutListAT/index.php?upload=2"
+
+
+
+
+
+
+
+
+// URL REQUEST TESTS
+//let urlStr = "http://cutlist.at/a123123/index.php?upload=2"
+let urlStr = "http://cutlist.at/a123123/index.php"
+//let urlStr = "http://cutlist.at/index.php?upload=2"
+let userId = "a123123"
+//curl -F userfile[]=@$1 -F MAX_FILE_SIZE=10000000 -F confirm=true -F type=blank -F userid=$2 -F version=1 "$CutListAT/index.php?upload=2"
+// @ makes a file get attached in the post as a file upload
+let url = URL(string:urlStr)
+var request = URLRequest(url: url!)
+request.httpMethod = "POST"
+//request.httpBody = requestObject
+//request.httpMethod = "POST"
+//request.httpBody = NSData(contentsOfFile: "/Users/jens/Websites/pyOTR/test.cutlist") as Data?
+var cutliststr = ""
+do {
+cutliststr = try String(contentsOf: URL(string: "file:///Users/jens/Websites/pyOTR/test.cutlist")!, encoding: .utf8)
+}
+catch {/* error handling here */print("ERROR")}
+//cutliststr = "@file:///Users/jens/Websites/pyOTR/test.cutlist"
+//cutliststr = ""
+//cutliststr = "@" + cutliststr
+print(cutliststr)
+do{
+request = try createRequest()
+}
+catch{print("RR")}
+/*
+request.setValue(cutliststr, forHTTPHeaderField: "userfile[]")
+request.setValue(userId, forHTTPHeaderField: "userid")
+request.setValue("true", forHTTPHeaderField: "confirm")
+request.setValue("1", forHTTPHeaderField: "version")
+request.setValue("blank", forHTTPHeaderField: "type")
+request.setValue("10000000", forHTTPHeaderField: "MAX_FILE_SIZE")
+
+//var params = "userfile=test&MAX_FILE_SIZE=10000000&confirm=true&type=blank&userid=a123123&version=1"
+var params = "upload=2"
+request.httpBody = params.data(using: String.Encoding.utf8)*/

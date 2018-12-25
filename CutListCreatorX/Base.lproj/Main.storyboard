@@ -777,7 +777,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t57-cq-ntd">
-                                <rect key="frame" x="458" y="3" width="112" height="32"/>
+                                <rect key="frame" x="402" y="3" width="112" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Save Cutlist" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hj2-bx-okG">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -945,6 +945,17 @@
                                 </buttonCell>
                                 <connections>
                                     <action selector="RemoveEntryCallback:" target="XfG-lQ-9wD" id="R4K-gg-axK"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zCx-vC-Fvl">
+                                <rect key="frame" x="513" y="4" width="84" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Upload" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DGg-x0-AVW">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="testClback:" target="XfG-lQ-9wD" id="cdn-2z-cQh"/>
                                 </connections>
                             </button>
                         </subviews>
