@@ -22,6 +22,7 @@
 		B484690A219368E6000C7784 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4846909219368E6000C7784 /* ViewController.swift */; };
 		B484690C219368E6000C7784 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B484690B219368E6000C7784 /* Assets.xcassets */; };
 		B484690F219368E6000C7784 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B484690D219368E6000C7784 /* Main.storyboard */; };
+		B486A29921D38A00001F9193 /* ViewControllerUpload.swift in Sources */ = {isa = PBXBuildFile; fileRef = B486A29821D38A00001F9193 /* ViewControllerUpload.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		B484690B219368E6000C7784 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B484690E219368E6000C7784 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B4846910219368E6000C7784 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B486A29821D38A00001F9193 /* ViewControllerUpload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerUpload.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			children = (
 				B4846907219368E6000C7784 /* AppDelegate.swift */,
 				B4846909219368E6000C7784 /* ViewController.swift */,
+				B486A29821D38A00001F9193 /* ViewControllerUpload.swift */,
 				B484690B219368E6000C7784 /* Assets.xcassets */,
 				B484690D219368E6000C7784 /* Main.storyboard */,
 				B4846910219368E6000C7784 /* Info.plist */,
@@ -178,6 +181,7 @@
 				B4777DF621CFA12500966C9F /* CutListTools.swift in Sources */,
 				B4777E0221CFE5FC00966C9F /* SniplistParser.swift in Sources */,
 				B4777DF221CE503800966C9F /* GraphView.swift in Sources */,
+				B486A29921D38A00001F9193 /* ViewControllerUpload.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

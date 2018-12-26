@@ -84,7 +84,7 @@ class Sniplist : NSObject {
     }
     
     
-    
+    // https://stackoverflow.com/questions/26162616/upload-image-with-parameters-in-swift
     /// Create request
     ///
     /// - parameter userid:   The userid to be passed to web service

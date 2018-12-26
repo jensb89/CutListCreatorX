@@ -97,8 +97,8 @@ class ViewController: NSViewController {
     }
     
     @IBAction func testClback(_ sender: AnyObject) {
-        let sniplist = Sniplist()
-        sniplist.uploadCutlist()
+        //let sniplist = Sniplist()
+        //sniplist.uploadCutlist()
     }
     @IBAction func loadFileCallback(_ sender: NSButton) {
         let file = loadFile()
@@ -166,10 +166,12 @@ class ViewController: NSViewController {
     }
     
     @IBAction func RemoveEntryCallback(_ sender: NSButton) {
-        cutList.cutTimes.removeLast()
-        tableView.reloadData()
-        graphViewCtrl.numberOfCuts = cutList.cutTimes.count
-        graphViewCtrl.cuts = cutList.cutTimes
+        if cutList.cutTimes.count > 0{
+            cutList.cutTimes.removeLast()
+            tableView.reloadData()
+            graphViewCtrl.numberOfCuts = cutList.cutTimes.count
+            graphViewCtrl.cuts = cutList.cutTimes
+        }
     }
     
     func tableViewDoubleClick(_ sender:AnyObject) {
