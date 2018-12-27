@@ -12,6 +12,11 @@ import Cocoa
 class Cutlist {
     
     var cutTimes = [Double]()
+    var author:String = "unknownAuthor"
+    var rating:Int = 0
+    var userComment:String = ""
+    var suggestedFileName:String = ""
+    var version = "0.2-alpha"
 
     // Helper: Write General Informations
     func writeCutlistGeneralInfos(ver:String, fps:Double) -> String {
@@ -25,6 +30,24 @@ class Cutlist {
             + "VDUseSmartRendering=1\n"
             + "comment1=The following parts of the movie will be kept, the rest will be cut out.\n"
             + "comment2=All values are given in seconds.\n"
+        return str
+    }
+    
+    // Helper: Write author and rating informations
+    func writeCutlistInfo() -> String {
+        let str = "[Info]\n"
+        + "Author=" + author + "\n"
+        + "RatingByAuthor=" + String(rating) + "\n"
+        + "EPGError=0" + "\n"
+        + "ActualContent="  + "\n"
+        + "MissingBeginning=0" + "\n"
+        + "MissingEnding=0" + "\n"
+        + "MissingVideo=0" + "\n"
+        + "MissingAudio=0" + "\n"
+        + "OtherError=0" + "\n"
+        + "OtherErrorDescription=" + "\n"
+        + "SuggestedMovieName=" + suggestedFileName + "\n"
+        + "UserComment=" + userComment + "\n"
         return str
     }
     
@@ -49,7 +72,7 @@ class Cutlist {
     }
     
     // save Cutlist to file
-    func saveCutList(videoFileName:String, version:String, frameRate:Double, fileSize:Int, frameOffset:Int) {
+    func saveCutList(videoFileName:String, frameRate:Double, fileSize:Int, frameOffset:Int) {
         // Filename
         let cutListFile = "file:///" + videoFileName + ".cutlist"
         let url = URL(string: "file:///" + videoFileName)
@@ -89,6 +112,11 @@ class Cutlist {
                 cutNo += 1
             }
         }
+        
+        // Write cutlist info: rating, author, errors, suggested filename etc:
+        text += writeCutlistInfo()
+        
+        
         // Optional: Save in User DOcuments directory:
         /*
          if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
