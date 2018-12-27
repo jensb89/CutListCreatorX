@@ -20,7 +20,7 @@ func getVideoInfos(file:String) -> [String] {
     print(stringPath)
     task.launchPath = stringPath
     //task.arguments = ["-v","quiet","-print_format","json","-show_format","-show_streams",file]
-    task.arguments = ["-v","quiet","-show_streams","-show_format",file]
+    task.arguments = ["-v","quiet","-show_streams","-show_format","-select_streams","V:0",file] //V:0 select first video stream only (no audio stream)
     
     
     let outpipe = Pipe()

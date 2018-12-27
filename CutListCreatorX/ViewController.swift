@@ -100,6 +100,7 @@ class ViewController: NSViewController {
         //let sniplist = Sniplist()
         //sniplist.uploadCutlist()
     }
+    
     @IBAction func loadFileCallback(_ sender: NSButton) {
         let file = loadFile()
         if file.isEmpty{
@@ -134,12 +135,14 @@ class ViewController: NSViewController {
         
         //FFPROBE
         let infos = getVideoInfos(file:file)
+        print(infos)
         var matches = infos.joined().matchingStrings(regex: "r_frame_rate=(\\d+\\/?\\d+)")
-        let isIndexValid = matches.indices.contains(1)
+        let isIndexValid = matches.indices.contains(0)
         if(isIndexValid){
-            let matchesNew = matches[1].components(separatedBy: "/")
+            let matchesNew = matches[0].components(separatedBy: "/")
             if (matchesNew.count == 2){
                 frameRate = Double(matchesNew[0])!/Double(matchesNew[1])!
+                print("FrameRate (FFPROBE):" + String(frameRate))
             }
         }
         fileSize = Int(infos.joined().matchingStrings(regex: "size=(\\d+)").last!)!
@@ -185,5 +188,4 @@ class ViewController: NSViewController {
             return
         }
     }
-
 }

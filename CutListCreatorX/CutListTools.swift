@@ -52,6 +52,8 @@ class Cutlist {
     func saveCutList(videoFileName:String, version:String, frameRate:Double, fileSize:Int, frameOffset:Int) {
         // Filename
         let cutListFile = "file:///" + videoFileName + ".cutlist"
+        let url = URL(string: "file:///" + videoFileName)
+        let fileName = url?.lastPathComponent
         
         // Write general infos : START
         var text = writeCutlistGeneralInfos(ver:version, fps:frameRate)
@@ -65,7 +67,7 @@ class Cutlist {
             text += "NoOfCuts=" + String((cutTimes.count+1)/2) + "\n" // TODO: Show warn dialog
         }
         // File specifics
-        text += "ApplyToFile=" + "\n" //TODO
+        text += "ApplyToFile=" + fileName! + "\n" //TODO
         text += "OriginalFileSizeBytes=" + String(fileSize) + "\n" //TODO
         text += "\n"
         // Write general infos : END
@@ -77,7 +79,7 @@ class Cutlist {
                 text += "[Cut" + String(cutNo) + "]\n"
                 text += "Start=" + String(cutTimes[i]) + "\n"
                 if(frameRate > 0){
-                    text += "StartFrame" + String(Int(cutTimes[i]*frameRate) + frameOffset) + "\n"
+                    text += "StartFrame=" + String(Int(cutTimes[i]*frameRate) + frameOffset) + "\n"
                 }
                 text += "Duration=" + String(cutTimes[i+1]-cutTimes[i]) + "\n"
                 if(frameRate > 0){
