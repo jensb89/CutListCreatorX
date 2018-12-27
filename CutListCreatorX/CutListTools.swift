@@ -13,54 +13,64 @@ class Cutlist {
     
     var cutTimes = [Double]()
 
-// Write General Informations
-func writeCutlistGeneralInfos(ver:String, fps:Double) -> String {
-    // TODO: COnvert to Swift 4: Multiline strings
-    let str = "[General]\n"
-        + "Application=CutlistCreatorX\n"
-        + "Version=" + ver + "\n"
-        + "FramesPerSecond=" + String(fps) + "\n"
-        + "IntendedCutApplicationName=AVCut\n"
-        + "IntendedCutApplication=avcut\n"
-        + "VDUseSmartRendering=1\n"
-        + "comment1=The following parts of the movie will be kept, the rest will be cut out.\n"
-        + "comment2=All values are given in seconds.\n"
-    return str
-}
-
-func loadCutlist(url:URL) {
-    do{
-        let fileStr = try String(contentsOf: url, encoding: .utf8)
-        print(fileStr)
-        let startTimes = fileStr.matchingStrings(regex: "Start=(\\d+\\.?\\d+)")
-        let durations = fileStr.matchingStrings(regex: "Duration=(\\d+\\.?\\d+)")
-        if (startTimes.count == durations.count){
-            for i in 0..<startTimes.count {
-                cutTimes.append(Double(startTimes[i])!)
-                cutTimes.append(Double(startTimes[i])!+Double(durations[i])!)
-            }
-        }
-        print(startTimes)
+    // Helper: Write General Informations
+    func writeCutlistGeneralInfos(ver:String, fps:Double) -> String {
+        // TODO: COnvert to Swift 4: Multiline strings
+        let str = "[General]\n"
+            + "Application=CutlistCreatorX\n"
+            + "Version=" + ver + "\n"
+            + "FramesPerSecond=" + String(fps) + "\n"
+            + "IntendedCutApplicationName=AVCut\n"
+            + "IntendedCutApplication=avcut\n"
+            + "VDUseSmartRendering=1\n"
+            + "comment1=The following parts of the movie will be kept, the rest will be cut out.\n"
+            + "comment2=All values are given in seconds.\n"
+        return str
     }
-    catch{
-        print("Something went wrong")
-    }
-}
     
+    // Load Cutlist from file
+    func loadCutlist(url:URL) {
+        do{
+            let fileStr = try String(contentsOf: url, encoding: .utf8)
+            print(fileStr)
+            let startTimes = fileStr.matchingStrings(regex: "Start=(\\d+\\.?\\d+)")
+            let durations = fileStr.matchingStrings(regex: "Duration=(\\d+\\.?\\d+)")
+            if (startTimes.count == durations.count){
+                for i in 0..<startTimes.count {
+                    cutTimes.append(Double(startTimes[i])!)
+                    cutTimes.append(Double(startTimes[i])!+Double(durations[i])!)
+                }
+            }
+            print(startTimes)
+        }
+        catch{
+            print("Something went wrong")
+        }
+    }
+    
+    // save Cutlist to file
     func saveCutList(videoFileName:String, version:String, frameRate:Double, fileSize:Int, frameOffset:Int) {
+        // Filename
         let cutListFile = "file:///" + videoFileName + ".cutlist"
+        
+        // Write general infos : START
         var text = writeCutlistGeneralInfos(ver:version, fps:frameRate)
+        
+        // Calculate number of cuts
         if cutTimes.count % 2 == 0{
             text += "NoOfCuts=" + String(cutTimes.count/2) + "\n"
         }
         else{
             print("Odd number of cuts!!!")
-            text += "NoOfCuts=" + String((cutTimes.count+1)/2) + "\n"
+            text += "NoOfCuts=" + String((cutTimes.count+1)/2) + "\n" // TODO: Show warn dialog
         }
+        // File specifics
         text += "ApplyToFile=" + "\n" //TODO
         text += "OriginalFileSizeBytes=" + String(fileSize) + "\n" //TODO
         text += "\n"
+        // Write general infos : END
         
+        // Write cuts
         var cutNo:Int = 0
         for i in 0..<(cutTimes.count-1) {
             if i % 2 == 0 {
@@ -89,10 +99,14 @@ func loadCutlist(url:URL) {
          }
          catch {/* error handling here */}
          }*/
+        
+        // Save to disk
         do{
             try text.write(to:URL(string:cutListFile)!, atomically: false, encoding: .utf8)
         }
-        catch { /* error handling */ }
+        catch { /* error handling */
+            print("Cutlist could not be saved!")
+        }
     }
 
 }

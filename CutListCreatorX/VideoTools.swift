@@ -51,6 +51,7 @@ func getVideoInfos(file:String) -> [String] {
 }
 
 
+// Count Frames in Video (slow)
 // https://stackoverflow.com/questions/13645306/get-number-of-frames-in-a-video-via-avfoundation
 func countFrames(for videoURL: URL) -> Int {
     let asset = AVAsset(url: videoURL)
