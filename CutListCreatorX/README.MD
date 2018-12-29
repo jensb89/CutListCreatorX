@@ -1,19 +1,31 @@
 # CutListCreatorX
 
-A macOS application to generate cutlists for video files from OnlineTvRecorder.com (OTR).
-Currently, the app is basically a playground to get to know SWIFT programming and not really a production ready app :)
-Even though most parts are already working, the code needs a lot of improvement: there are nearly no error checks and some parts are not very nicely written.
-The app was developed with Xcode 8/Swift 3 (on macOS El Capitan) and works only for mp4 files right now.
+## ViewController
+The main viewController.
 
-### Screenshot:
-![Screenshot](screenshot.JPEG)
+## ViewControllerUpload
+The viewController for the upload/save dialog.
 
-### TODO:
-- Upgrade to Switft4
-- Encapsulate cutlist specific code
-- Implement error checks
-- Code style improvements
-- Implement Second View Controller to set an author and a cutlist rating
-- Implement Export to cutlist.at function
-- Run avcut program and cut video file directly
-- Add avi support (e.g. by converting AVI files in the background to mp4 with ffmpeg)
+## GraphView
+Class that defines the graphView to show the cuts in either green (video) and red (advertisements and everything that is cut out).
+
+## TableView
+Functions for the tableView Container used to show the cut-times and cut-framenumbers.
+
+## CutListTools
+Here, the class "Cutlist" is defined that contains functions to load&parse or save a cutlist.
+
+## SniplistParser
+Here, the class Sniplist is defined that can be used to interact with the sniplist website (http://cutlist.at), e.g. for uploading a cutlist.
+
+## VideoTools
+Everything related to the actual video file, such as obtaining video informations like frameRate, duration etc. e.g. by using FFProbe.
+
+## FileSystemOperations
+Helper functions for file system operations, such as loading a file with a NSOpenPanel
+
+## RegexTools
+Helper functions used to parse a cutlist file, such as returning a matching regex-string.
+
+
+
