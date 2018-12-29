@@ -690,23 +690,12 @@
                                 <rect key="frame" x="20" y="62" width="299" height="173"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </avPlayerView>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oda-qh-U9g">
-                                <rect key="frame" x="15" y="4" width="62" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="-20" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4k5-ls-5c7">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="m20Callback:" target="XfG-lQ-9wD" id="jdv-dm-plf"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q3H-uf-5E4">
-                                <rect key="frame" x="78" y="3" width="53" height="32"/>
+                                <rect key="frame" x="84" y="3" width="61" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="-1" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eO3-Z5-hy1">
+                                <buttonCell key="cell" type="push" title="-1" alternateTitle=" " bezelStyle="rounded" image="left-arrow" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="eO3-Z5-hy1">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="12"/>
                                     <string key="keyEquivalent"></string>
                                 </buttonCell>
                                 <connections>
@@ -714,11 +703,11 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Dc-Wq-sAo">
-                                <rect key="frame" x="131" y="3" width="55" height="32"/>
+                                <rect key="frame" x="137" y="3" width="62" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="+1" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sxv-4X-nBD">
+                                <buttonCell key="cell" type="push" title="+1" bezelStyle="rounded" image="right-arrow" imagePosition="right" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sxv-4X-nBD">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="12"/>
                                     <string key="keyEquivalent"></string>
                                 </buttonCell>
                                 <connections>
@@ -726,11 +715,11 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZLP-bC-dOF">
-                                <rect key="frame" x="186" y="3" width="65" height="32"/>
+                                <rect key="frame" x="196" y="3" width="77" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="+20" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3eY-JA-BEm">
+                                <buttonCell key="cell" type="push" title="+20" bezelStyle="rounded" image="double-right-arrows" imagePosition="right" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3eY-JA-BEm">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="12"/>
                                 </buttonCell>
                                 <connections>
                                     <action selector="p20Callback:" target="XfG-lQ-9wD" id="zUY-vp-POI"/>
@@ -746,9 +735,9 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="naa-9Q-3gj">
-                                <rect key="frame" x="283" y="3" width="86" height="32"/>
+                                <rect key="frame" x="283" y="3" width="98" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Set Cut" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fl9-M8-CQK">
+                                <buttonCell key="cell" type="push" title="Set Cut" bezelStyle="rounded" image="appIconRaw" imagePosition="left" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fl9-M8-CQK">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -954,6 +943,17 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="appIconRaw" id="A3L-8w-lRL"/>
                             </imageView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oda-qh-U9g">
+                                <rect key="frame" x="14" y="4" width="75" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="-20" bezelStyle="rounded" image="double-left-arrows" imagePosition="left" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="4k5-ls-5c7">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system" size="12"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="m20Callback:" target="XfG-lQ-9wD" id="jdv-dm-plf"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -1253,5 +1253,9 @@
     <resources>
         <image name="NSComputer" width="32" height="32"/>
         <image name="appIconRaw" width="384" height="384"/>
+        <image name="double-left-arrows" width="192" height="192"/>
+        <image name="double-right-arrows" width="192" height="192"/>
+        <image name="left-arrow" width="192" height="192"/>
+        <image name="right-arrow" width="192" height="192"/>
     </resources>
 </document>
