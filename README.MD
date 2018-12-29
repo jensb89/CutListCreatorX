@@ -22,6 +22,8 @@ MouseWheel (in video frame): change by around 8 frames back or forward
 - ~~Implement Export to cutlist.at function~~
 - Run avcut program and cut video file directly
 - Add avi support (e.g. by converting AVI files in the background to mp4 with ffmpeg)
+- Load list of cutlists from Sniplist and use one of them as a template
+- Rate downloaded cutlists
 
 ### Credit
 Icon made by Freepik (freepik.com) from www.flaticon.com.
