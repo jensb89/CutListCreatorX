@@ -75,13 +75,12 @@ extension GraphView {
         if numberOfCuts > 0 {
         var clipRect = barChartRect
         // Loop over all cuts
-        for index in 0..<numberOfCuts {
+        for index in 0..<numberOfCuts+1 {
             // Calculate percentage width
-            Swift.print("GRAPHVIEW")
-            Swift.print(cuts[index]/duration)
             var clipWidth=barChartRect.width
-            if index == 0 { clipWidth=floor(barChartRect.width * CGFloat((cuts[index])/duration))}
-            else{ clipWidth = floor(barChartRect.width * CGFloat((cuts[index]-cuts[index-1])/duration))}
+            if index == 0 { clipWidth=barChartRect.width * CGFloat((cuts[index])/duration)}
+            else if index == numberOfCuts { clipWidth = barChartRect.width * CGFloat((duration-cuts[index-1])/duration) }
+            else{ clipWidth = barChartRect.width * CGFloat((cuts[index]-cuts[index-1])/duration)}
             clipRect.size.width = clipWidth
             
             // Saves the state of the context
