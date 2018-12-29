@@ -14,6 +14,8 @@ MouseWheel (in video frame): change by around 8 frames back or forward
 ### Screenshot:
 ![Screenshot](screenshot.JPEG)
 
+![Screenshot2](screenshot2.JPEG)
+
 ### TODO:
 - Upgrade to Switft4
 - Implement error checks
