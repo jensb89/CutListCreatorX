@@ -44,7 +44,7 @@ func getVideoInfos(file:String) -> [String] {
     
     //TODO: Update Swift4 use JSON Decoder
     task.waitUntilExit()
-    let status = task.terminationStatus
+    //let status = task.terminationStatus
     
     //var frameRate = Double(output.matchingStrings("\"r_frame_rate\":(\\d+)"))
     return output

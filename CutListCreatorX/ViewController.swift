@@ -16,7 +16,6 @@ class ViewController: NSViewController {
     var videoTime : Double = 0.0
     var totalFrames : Int = 0
     var frameRate : Double = 0.0
-    var version = "0.1-alpha"
     var videoFileName : String?
     var frameOffset : Int = 1
     var fileSize : Int = 0
@@ -42,12 +41,13 @@ class ViewController: NSViewController {
         let fileURL = "file:///" + file
         let url = URL(string:fileURL)
         cutList.loadCutlist(url:url!)
+        
+        // Update table View
         tableView.reloadData()
+        // Update Cut Graphic
+        graphViewCtrl.numberOfCuts = cutList.cutTimes.count
+        graphViewCtrl.cuts = cutList.cutTimes
         }
-    
-    @IBAction func saveCutlistCallback(_ sender: NSButton) {
-        cutList.saveCutList(videoFileName: videoFileName!, version: version, frameRate: frameRate, fileSize: fileSize, frameOffset: frameOffset)
-    }
     
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var cutNumberView: NSTableColumn!
@@ -56,6 +56,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var graphViewCtrl: GraphView!
     @IBOutlet weak var progressBar: NSProgressIndicator!
     
+    @IBOutlet weak var setCutBtn: NSButton!
+    @IBOutlet weak var saveBtn: NSButton!
     
     @IBAction func loadCutlistAt(_ sender: NSButton) {
         let sniplist = Sniplist()
@@ -64,18 +66,20 @@ class ViewController: NSViewController {
     }
     
     
-    //Buton callbacks
+    //Set Cut button callbacks
     @IBAction func buttonCallback(_ sender: NSButton) {
         
         //https://developer.apple.com/documentation/avfoundation/avplayeritem/1387968-stepbycount?language=objc
         // Seems to need an AVPlayer Item Object
-        print(playerView.player?.currentItem?.duration.seconds)
+        /*print(playerView.player?.currentItem?.duration.seconds)
         print(videoTime)
         print(playerView.player?.currentItem?.status.rawValue)
         print(playerView.player?.currentItem?.currentTime().seconds)
         print("StatusClb:")
-        print(playerView.player?.currentItem?.status.rawValue)
+        print(playerView.player?.currentItem?.status.rawValue)*/
+        
         cutList.cutTimes.append((playerView.player?.currentItem!.currentTime().seconds)!)
+        cutList.cutTimes.sort()
         // Update tableView
         tableView.reloadData()
         // Update Cut Graphic
@@ -92,13 +96,11 @@ class ViewController: NSViewController {
                 // Set the video duration and update the same info in the graphicViewController
                 videoTime = (playerView.player?.currentItem?.duration.seconds)!
                 graphViewCtrl.duration = videoTime
+                // Activate buttons
+                saveBtn.isEnabled = true
+                setCutBtn.isEnabled = true
             }
         }
-    }
-    
-    @IBAction func testClback(_ sender: AnyObject) {
-        //let sniplist = Sniplist()
-        //sniplist.uploadCutlist()
     }
     
     @IBAction func loadFileCallback(_ sender: NSButton) {
@@ -121,6 +123,10 @@ class ViewController: NSViewController {
             }
         }
         
+        // Check for previous player and remove key value observaation
+        if playerView.player != nil {
+            playerView.player?.currentItem?.removeObserver(self, forKeyPath: "status")
+        }
         //Bind the player to the playerView
         playerView.player = player
         // Add key value observation for the player status. The player is loaded asynchronous and not all values are availabe directly at the beginning (e.g. the video duration)
@@ -186,6 +192,17 @@ class ViewController: NSViewController {
         }
         else {
             return
+        }
+    }
+    
+    // Share data between two ViewControlelr by Segue
+    override func prepare (for segue: NSStoryboardSegue, sender: Any!) {
+        if (segue.identifier == "uploadBtnSegue") {
+            let svc = segue.destinationController as! ViewControllerUpload
+            svc.cutlist = cutList
+            svc.fileName = videoFileName
+            svc.fps = frameRate
+            svc.fileSize = fileSize
         }
     }
 }

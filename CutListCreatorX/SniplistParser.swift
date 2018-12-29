@@ -13,6 +13,7 @@ class Sniplist : NSObject {
 
     let recordKey = "cutlist"
     let dictionaryKeys = Set<String>(["downloadcount", "ratingbyauthor", "name", "author", "id"])
+    var ID : String = ""
 
     // a few variables to hold the results as we parse the XML
 
@@ -21,7 +22,7 @@ class Sniplist : NSObject {
     var currentValue: String?                // the current value for one of the keys in the dictionary
 
     
-    // Load Results
+    // Load Sniplist Results
     func loadResults(fileName:String){
         let urlString = "http://www.cutlist.at/getxml.php?name=" + fileName
         let url = URL(string: urlString)
@@ -54,17 +55,17 @@ class Sniplist : NSObject {
     
     
     
-    /// UPLOAD
-    func uploadCutlist(){
-        var cutliststr = ""
-        do {
-            cutliststr = try String(contentsOf: URL(string: "file:///Users/user/test.cutlist")!, encoding: .utf8)
-        }
-        catch {/* error handling here */print("ERROR")}
+    /// UPLOAD Cutlist
+    ///
+    /// - parameter filePath:   the path to the cutlist file as a String (e.g. "/User/user/someMovie.cutlist")
+    func uploadCutlist(filePath:String, completionHandler:@escaping (_ status:String)-> ()) {
+        
+        let file = "file://" + filePath
+        var status:String = ""
         
         var request : URLRequest?
         do{
-            request = try createRequest()
+            request = try createRequest(filePath: file)
         }
         catch{print("Request could not be created")}
         
@@ -78,7 +79,10 @@ class Sniplist : NSObject {
                 return
             }
             //print(response)
-            print(String.init(data: data, encoding: String.Encoding.utf8))
+            status = String.init(data: data, encoding: String.Encoding.utf8)!
+            completionHandler(status)
+            print(status)
+            return
         }
         task.resume()
     }
@@ -87,15 +91,11 @@ class Sniplist : NSObject {
     // https://stackoverflow.com/questions/26162616/upload-image-with-parameters-in-swift
     /// Create request
     ///
-    /// - parameter userid:   The userid to be passed to web service
-    /// - parameter password: The password to be passed to web service
-    /// - parameter email:    The email address to be passed to web service
-    ///
     /// - returns:            The `URLRequest` that was created
     
-    func createRequest() throws -> URLRequest {
+    func createRequest(filePath:String) throws -> URLRequest {
         let parameters = [
-            "userid"  : "abc123",
+            "userid"  : ID,
             "version"    : "1",
             "confirm" : "true",
             "type"     : "blank",
@@ -103,15 +103,14 @@ class Sniplist : NSObject {
         
         let boundary = generateBoundaryString()
         
-        let url = URL(string: "http://cutlist.at/abc123/index.php?upload=2")!
+        let url = URL(string: "http://cutlist.at/"+ID+"/index.php?upload=2")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         
-        let file = "file:///Users/user/test.cutlist"
         var data = Data()
         do{
-            data = try createBody(with: parameters, filePathKey: "file", paths: [file], boundary: boundary)
+            data = try createBody(with: parameters, filePathKey: "file", paths: [filePath], boundary: boundary)
         }
         catch{print("ERROR2")}
         request.httpBody = data
@@ -169,8 +168,6 @@ class Sniplist : NSObject {
     }
     
     /// Determine mime type on the basis of extension of a file.
-    ///
-    /// This requires `import MobileCoreServices`.
     ///
     /// - parameter path:         The path of the file for which we are going to determine the mime type.
     ///
