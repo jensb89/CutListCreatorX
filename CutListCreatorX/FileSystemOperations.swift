@@ -19,7 +19,7 @@ func loadFile() -> String {
     dialog.title                   = "Choose a .mp4 file";
     dialog.showsResizeIndicator    = true;
     dialog.showsHiddenFiles        = false;
-    dialog.canChooseDirectories    = true;
+    dialog.canChooseDirectories    = false;
     dialog.canCreateDirectories    = true;
     dialog.allowsMultipleSelection = false;
     dialog.allowedFileTypes        = ["mp4","cutlist"];
