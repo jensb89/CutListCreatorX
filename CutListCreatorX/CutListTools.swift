@@ -19,11 +19,11 @@ class Cutlist {
     var version = "0.2-alpha"
 
     // Helper: Write General Informations
-    func writeCutlistGeneralInfos(ver:String, fps:Double) -> String {
+    func writeCutlistGeneralInfos(fps:Double) -> String {
         // TODO: COnvert to Swift 4: Multiline strings
         let str = "[General]\n"
             + "Application=CutlistCreatorX\n"
-            + "Version=" + ver + "\n"
+            + "Version=" + version + "\n"
             + "FramesPerSecond=" + String(fps) + "\n"
             + "IntendedCutApplicationName=AVCut\n"
             + "IntendedCutApplication=avcut\n"
@@ -79,7 +79,7 @@ class Cutlist {
         let fileName = url?.lastPathComponent
         
         // Write general infos : START
-        var text = writeCutlistGeneralInfos(ver:version, fps:frameRate)
+        var text = writeCutlistGeneralInfos(fps:frameRate)
         
         // Calculate number of cuts
         if cutTimes.count % 2 == 0{
